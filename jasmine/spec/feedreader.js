@@ -115,7 +115,8 @@ $(function() {
         });
 
         it('content changes when new feed is loaded', function(done) {
-            // code to check for content change
+            // code to check for content change: compare innerHTML/innerText of feedT1 and feedT2
+            // how to define feedT1 and feedT2?
             done();
         });
     });
