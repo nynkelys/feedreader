@@ -108,15 +108,21 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        var entriesT1; // Need to be defined here in order to be accessible in test
+        var entriesT2; // As they first require a function running, we cannot assign these vars to a value yet
         beforeEach(function(done) {
             loadFeed(0, function() {
-                done();
+                entriesT1 = document.querySelector(".feed").innerHTML; // After running loadFeed 0, assign to var
+
+                loadFeed(1, function() { // After running loadFeed 1, assign to var (later, but why not here?)
+                    done();
+                });
             });
         });
 
         it('content changes when new feed is loaded', function(done) {
-            // code to check for content change: compare innerHTML/innerText of feedT1 and feedT2
-            // how to define feedT1 and feedT2?
+            entriesT2 = document.querySelector(".feed").innerHTML; // Why can I not define this variable between line 117 and 118?
+            expect(entriesT1).not.toEqual(entriesT2);
             done();
         });
     });
