@@ -53,16 +53,16 @@ $(function() {
 
     /* TODO: Write a new test suite named "The menu" */
     describe('The menu', function() {
-        var body = document.body;
-        var menuitem = document.querySelector('.menu-icon-link');
+        const body = document.body;
+        const menuitem = document.querySelector('.menu-icon-link');
 
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-        it('is hidden by default', function() { // body .menu-hidden toggle
-            expect(body.className).toContain('menu-hidden');
+        it('is hidden by default', function() { // Body .menu-hidden toggle
+            expect(body.className).toContain('menu-hidden'); // When menuitem is clicked yet
         });
 
          /* TODO: Write a test that ensures the menu changes
@@ -71,11 +71,11 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
         it('changes visibility when clicked', function() {
-            menuitem.click();
-            expect(body.className).not.toContain('menu-hidden');;
+            menuitem.click(); // Then, when clicked
+            expect(body.className).not.toContain('menu-hidden'); // Expect not to contain class anymore
 
-            menuitem.click();
-            expect(body.className).toContain('menu-hidden');
+            menuitem.click(); // Then, when clicked again
+            expect(body.className).toContain('menu-hidden'); // Return to default state
         });
     });
 
@@ -88,7 +88,7 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-        beforeEach(function(done) {
+        beforeEach(function(done) { // Before testing anything, make sure feed is loaded
             loadFeed(0, function() {
                 done();
             });
@@ -96,26 +96,26 @@ $(function() {
 
         it('contains at least one .entry element within .feed container', function(done) {
             var entries = document.querySelector(".feed").getElementsByClassName("entry");
-            expect(entries.length).not.toBe(0);
+            expect(entries.length).not.toBe(0); // At least one entry-item in feed-array
             done();
         });
     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New feed selection', function() {
+        var entriesT1; // Need to be defined here in order to be accessible in test
+        var entriesT2; // As they first require a function running (loadFeed), we cannot assign these vars to a value yet
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        var entriesT1; // Need to be defined here in order to be accessible in test
-        var entriesT2; // As they first require a function running, we cannot assign these vars to a value yet
         beforeEach(function(done) {
             loadFeed(0, function() {
                 entriesT1 = document.querySelector(".feed").innerHTML; // After running loadFeed 0, assign to var
 
-                loadFeed(1, function() { // After running loadFeed 1, assign to var (later, but why not here?)
-                    done();
+                loadFeed(1, function() { // After running loadFeed 1, assign to var (later, but why not here just like entriesT1?)
+                    done(); // Makes sure these functions are ran (i.e. feeds are loaded) before running tests
                 });
             });
         });
