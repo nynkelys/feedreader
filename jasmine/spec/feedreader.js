@@ -112,7 +112,7 @@ $(function() {
          */
         beforeEach(function(done) {
             loadFeed(0, function() {
-                entriesT1 = document.querySelector(".feed").innerHTML; // After running loadFeed 0, assign to var
+                entriesT1 = document.querySelector(".feed").innerHTML; // After running loadFeed 0, assign to var (Is innerHTML better than innerText?)
 
                 loadFeed(1, function() { // After running loadFeed 1, assign to var (later, but why not here just like entriesT1?)
                     done(); // Makes sure these functions are ran (i.e. feeds are loaded) before running tests
