@@ -32,7 +32,7 @@ $(function() {
          * and that the URL is not empty.
          */
         it('have an URL', function () {
-            for (var feed of allFeeds) {
+            for (const feed of allFeeds) {
                 expect(feed.url).toBeDefined();
                 expect(feed.url.length).not.toBe(0);
             };
@@ -43,7 +43,7 @@ $(function() {
          * and that the name is not empty.
          */
         it('have a name', function() {
-            for (var feed of allFeeds) {
+            for (const feed of allFeeds) {
                 expect(feed.name).toBeDefined();
                 expect(feed.name).not.toBe(0);
             };
@@ -95,7 +95,7 @@ $(function() {
         });
 
         it('contains at least one .entry element within .feed container', function(done) {
-            var entries = document.querySelector(".feed").getElementsByClassName("entry");
+            const entries = document.querySelector(".feed").getElementsByClassName("entry");
             expect(entries.length).not.toBe(0); // At least one entry-item in feed-array
             done();
         });
@@ -103,8 +103,8 @@ $(function() {
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New feed selection', function() {
-        var entriesT1; // Need to be defined here in order to be accessible in test
-        var entriesT2; // As they first require a function running (loadFeed), we cannot assign these vars to a value yet
+        let entriesT1; // Need to be defined here in order to be accessible in test
+        let entriesT2; // As they first require a function running (loadFeed), we cannot assign these vars to a value yet
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
