@@ -89,9 +89,7 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         beforeEach(function(done) { // Before testing anything, make sure feed is loaded
-            loadFeed(0, function() {
-                done();
-            });
+            loadFeed(0, done);
         });
 
         it('contains at least one .entry element within .feed container', function(done) {
