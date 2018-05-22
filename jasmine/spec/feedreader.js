@@ -114,14 +114,14 @@ $(function() {
             loadFeed(0, function() {
                 entriesT1 = document.querySelector(".feed").innerHTML; // After running loadFeed 0, assign to var (Is innerHTML better than innerText?)
 
-                loadFeed(1, function() { // After running loadFeed 1, assign to var (later, but why not here just like entriesT1?)
+                loadFeed(1, function() { // After running loadFeed 1, assign to var
+                    entriesT2 = document.querySelector(".feed").innerHTML;
                     done(); // Makes sure these functions are ran (i.e. feeds are loaded) before running tests
                 });
             });
         });
 
         it('content changes when new feed is loaded', function(done) {
-            entriesT2 = document.querySelector(".feed").innerHTML; // Why can I not define this variable between line 117 and 118?
             expect(entriesT1).not.toEqual(entriesT2);
             done();
         });
